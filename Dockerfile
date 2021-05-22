@@ -4,7 +4,7 @@ FROM caddy:2-builder as builder
 RUN xcaddy build master \
   --with github.com/caddy-dns/cloudflare \
   --with github.com/caddy-dns/gandi \
-  --with github.com/caddy-dns/dnspod
+  --with github.com/caddy-dns/dnspod@latest
 
 # install caddy
 FROM caddy:2-alpine

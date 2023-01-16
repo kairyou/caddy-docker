@@ -57,5 +57,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/caddy-docker:latest, ${{ secrets.DOCKERHUB_USERNAME }}/caddy-docker:${{ steps.date.outputs.today }}
-           
+          tags: |
+            kairyou//caddy-docker:${{ steps.date.outputs.today }}
+            kairyou/caddy-docker:latest

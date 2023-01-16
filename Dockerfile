@@ -3,7 +3,7 @@ FROM caddy:2-builder as builder
 
 # github.com/caddy-dns, cloudflare,gandi,alidns
 RUN xcaddy build master \
-  --with github.com/caddy-dns/dnspod
+  --with github.com/caddy-dns/dnspod \
   # --with github.com/kairyou/caddy-dns-dnspod@latest \
   --with github.com/caddy-dns/alidns \
   --with github.com/caddy-dns/gandi \

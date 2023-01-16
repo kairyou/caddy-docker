@@ -58,5 +58,5 @@ jobs:
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            kairyou/caddy-docker:${{ steps.date.outputs.today }}
             kairyou/caddy-docker:latest
+

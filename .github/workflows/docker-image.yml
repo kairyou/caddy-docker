@@ -22,7 +22,8 @@ on:
 jobs:
   buildx:
     runs-on: ubuntu-latest
-    environment: 
+    environment:
+      # /settings/environments
       name: secrets
     steps:
       - name: Checkout

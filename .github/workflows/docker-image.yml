@@ -22,6 +22,8 @@ on:
 jobs:
   buildx:
     runs-on: ubuntu-latest
+    environment: 
+      name: secrets
     steps:
       - name: Checkout
         uses: actions/checkout@v2

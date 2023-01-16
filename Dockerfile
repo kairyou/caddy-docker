@@ -1,9 +1,10 @@
+# 2-builder-alpine
 FROM caddy:2-builder as builder
 
-# https://github.com/caddy-dns, cloudflare,gandi,alidns
+# github.com/caddy-dns, cloudflare,gandi,alidns
 RUN xcaddy build master \
-  # --with https://github.com/caddy-dns/dnspod
-  --with github.com/kairyou/caddy-dns-dnspod@latest \
+  --with github.com/caddy-dns/dnspod
+  # --with github.com/kairyou/caddy-dns-dnspod@latest \
   --with github.com/caddy-dns/alidns \
   --with github.com/caddy-dns/gandi \
   --with github.com/caddy-dns/cloudflare

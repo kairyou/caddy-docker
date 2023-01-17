@@ -33,8 +33,7 @@ jobs:
           timezoneLinux: "Asia/Shanghai"
 
       - name: Get current date
-        id: date
-        run: echo "{today}=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
+        run: echo "BUILD_DATE=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -58,8 +57,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
-          # ${{ env.REPO }}:latest
           tags: |
-            ${{ env.REPO }}:${{ steps.date.outputs.today }}
-          # build-args: DATE=${{ steps.date.outputs.today }}
-
+            ${{ env.REPO }}:latest
+            ${{ env.REPO }}:${{ env.BUILD_DATE }}
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}

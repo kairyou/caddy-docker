@@ -25,16 +25,15 @@ jobs:
     environment:
       name: secrets
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Set Timezone
         uses: szenius/set-timezone@v1.1
         with:
           timezoneLinux: "Asia/Shanghai"
-
       - name: Get current date
         run: echo "BUILD_DATE=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
 
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx

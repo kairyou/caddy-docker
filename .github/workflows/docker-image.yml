@@ -57,6 +57,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
+          build-args: |
+            "user=${{ inputs.token }}"
+            "today=${{ steps.date.outputs.today }}"
           tags: |
-            kairyou/caddy-docker:latest
+            ${{ user }}/caddy-docker:latest
+            ${{ user }}/caddy-docker:${{ today }}
 

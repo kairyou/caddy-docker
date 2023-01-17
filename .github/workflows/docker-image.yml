@@ -58,7 +58,7 @@ jobs:
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
           build-args: |
-            "user=${{ inputs.token }}"
+            "user=${{ secrets.DOCKERHUB_USERNAME }}"
             "today=${{ steps.date.outputs.today }}"
           tags: |
             ${{ user }}/caddy-docker:latest

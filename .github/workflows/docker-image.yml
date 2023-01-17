@@ -57,10 +57,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
-          build-args: |
+          secrets: |
             "user=${{ secrets.DOCKERHUB_USERNAME }}"
             "today=${{ steps.date.outputs.today }}"
           tags: |
-            ${{ user }}/caddy-docker:latest
-            ${{ user }}/caddy-docker:${{ today }}
+            ${{ secrets.user }}/caddy-docker:latest
+            ${{ secrets.user }}/caddy-docker:${{ secrets.today }}
 

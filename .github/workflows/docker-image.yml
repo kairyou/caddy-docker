@@ -16,7 +16,8 @@ on:
         default: 'warning'
       tags:
         description: 'Test scenario tags'
-
+env:
+  REPO: kairyou/caddy-docker
 jobs:
   buildx:
     runs-on: ubuntu-latest
@@ -57,10 +58,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
-          secrets: |
-            "user=${{ secrets.DOCKERHUB_USERNAME }}"
-            "today=${{ steps.date.outputs.today }}"
           tags: |
-            ${{ secrets.user }}/caddy-docker:latest
-            ${{ secrets.user }}/caddy-docker:${{ secrets.today }}
+            ${{ env.REPO }}:latest
+            ${{ env.REPO }}:${{ steps.date.outputs.today }}
 

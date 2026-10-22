@@ -1,16 +1,16 @@
 # 2-builder-alpine
-FROM caddy:2-builder as builder
+FROM caddy:2.11.7-builder-alpine AS builder
 
 # github.com/caddy-dns, cloudflare,gandi,alidns
-RUN xcaddy build master \
-  --with github.com/caddy-dns/dnspod \
+RUN xcaddy build v2.11.7 \
+  --with github.com/caddy-dns/dnspod@fb7cc31cc04c68a304b8d2672c3e5d9f2ad3d7ba \
   # --with github.com/kairyou/caddy-dns-dnspod@latest \
-  --with github.com/caddy-dns/alidns \
-  --with github.com/caddy-dns/gandi \
-  --with github.com/caddy-dns/cloudflare
+  --with github.com/caddy-dns/alidns@v1.0.29 \
+  --with github.com/caddy-dns/gandi@v1.2.1 \
+  --with github.com/caddy-dns/cloudflare@v0.2.4
 
 # install caddy
-FROM caddy:2-alpine
+FROM caddy:2.11.7-alpine
 
 RUN apk add --no-cache \
   tzdata \
